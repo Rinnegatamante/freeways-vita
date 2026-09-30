@@ -11,10 +11,12 @@
  */
 
 #include "patch.h"
+#include "utils/dialog.h"
 
 #include <kubridge.h>
 #include <so_util/so_util.h>
 #include <stdio.h>
+#include <string.h>
 #include <vitasdk.h>
 
 #ifdef __cplusplus

@@ -1184,8 +1184,8 @@ jstring NewString(JNIEnv* env, const jchar* chars, jsize char_count) {
 
     UTF8 * dst = malloc((char_count+1) * sizeof(UTF8));
 
-    UTF16 * sourceStart = &(((UTF16*)chars)[0]);
-    UTF16 * sourceEnd = &(((UTF16*)chars)[char_count]);
+    const UTF16 * sourceStart = &(((const UTF16*)chars)[0]);
+    const UTF16 * sourceEnd = &(((const UTF16*)chars)[char_count]);
     UTF8 *  targetStart = &dst[0];
     UTF8 *  targetEnd = &dst[char_count];
     ConversionResult res = ConvertUTF16toUTF8(&sourceStart, sourceEnd,
@@ -1219,8 +1219,8 @@ const jchar * GetStringChars(JNIEnv* env, jstring string, jboolean *isCopy) {
 	size_t size = strlen(string);
 	UTF16 * dst = malloc((size+1) * sizeof(UTF16));
 
-    UTF8 * sourceStart = (UTF8 *)string;
-    UTF8 * sourceEnd = &(((UTF8*)string)[size]);
+    const UTF8 * sourceStart = (const UTF8 *)string;
+    const UTF8 * sourceEnd = &(((const UTF8*)string)[size]);
     UTF16 *  targetStart = &dst[0];
     UTF16 *  targetEnd = &dst[size];
     ConversionResult res = ConvertUTF8toUTF16(&sourceStart, sourceEnd,
